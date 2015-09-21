@@ -1,5 +1,21 @@
+import processing.core.*; 
+import processing.data.*; 
+import processing.event.*; 
+import processing.opengl.*; 
+
+import java.util.HashMap; 
+import java.util.ArrayList; 
+import java.io.File; 
+import java.io.BufferedReader; 
+import java.io.PrintWriter; 
+import java.io.InputStream; 
+import java.io.OutputStream; 
+import java.io.IOException; 
+
+public class Chemotaxis extends PApplet {
+
 Bacteria [] colony;//declare bacteria variables here   
- void setup()   
+ public void setup()   
  {     
    size(400,400);
    colony=new Bacteria[15];
@@ -9,7 +25,7 @@ Bacteria [] colony;//declare bacteria variables here
    }//initialize bacteria variables here   
    textAlign(CENTER);
  }   
- void draw()   
+ public void draw()   
  {    
    background(0,255,255);
    fill(188,240,167);
@@ -45,7 +61,7 @@ Bacteria [] colony;//declare bacteria variables here
      myY=y;
      myColor=(int)((Math.random()*255)+100);
    }  
-   void walk(){
+   public void walk(){
     /* if((Math.random())<0.25){
        myX+=2;
      }
@@ -66,7 +82,7 @@ Bacteria [] colony;//declare bacteria variables here
 
    }
 
-   void show(){
+   public void show(){
    	
      fill(myColor,myColor,0);
      ellipse(myX,myY,10,15);
@@ -74,9 +90,18 @@ Bacteria [] colony;//declare bacteria variables here
      strokeWeight(2);
      line(myX-4,myY+3,myX+4,myY+3);
      line(myX-4,myY-3,myX+4,myY-3);
-     line(myX-2.5,myY-6.5,myX-4,myY-15);
-     line(myX+2.5,myY-6.5,myX+4,myY-15);
+     line(myX-2.5f,myY-6.5f,myX-4,myY-15);
+     line(myX+2.5f,myY-6.5f,myX+4,myY-15);
     
     
    }
  }    
+  static public void main(String[] passedArgs) {
+    String[] appletArgs = new String[] { "Chemotaxis" };
+    if (passedArgs != null) {
+      PApplet.main(concat(appletArgs, passedArgs));
+    } else {
+      PApplet.main(appletArgs);
+    }
+  }
+}
